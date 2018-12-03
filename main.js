@@ -1,4 +1,3 @@
-
 class Board {
 	constructor(){
 		var mainCanvas = document.createElement('canvas');
@@ -6,10 +5,10 @@ class Board {
 		mainCanvas.width = 300;
 		mainCanvas.height = 300;
 		var ctx = mainCanvas.getContext('2d');
-		this.drawBoard(ctx);
+		this.drawIt(ctx);
 		document.body.appendChild(mainCanvas);
 	}
-	drawBoard(ctx){
+	drawIt(ctx){
 		ctx.moveTo(100, 0);
 		ctx.lineTo(100, 300);
 		ctx.stroke();
@@ -23,6 +22,14 @@ class Board {
 		ctx.lineTo(300, 200);
 		ctx.stroke();
 	};
+}
+
+class Place {
+	constructor(){}
+}
+
+class Player {
+	constructor(chequerType){}
 }
 
 var start = new Board();
