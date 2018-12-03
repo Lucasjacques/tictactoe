@@ -29,9 +29,9 @@ class Place {
 }
 
 class Player {
-	var chequerType
+	// var chequerType = "";
 	constructor(cqrType){
-		chequerType = cqrType;
+		// chequerType = cqrType;
 	}
 	drawPlay(){}
 }
