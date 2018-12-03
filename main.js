@@ -29,7 +29,11 @@ class Place {
 }
 
 class Player {
-	constructor(chequerType){}
+	var chequerType
+	constructor(cqrType){
+		chequerType = cqrType;
+	}
+	drawPlay(){}
 }
 
 var start = new Board();
