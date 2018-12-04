@@ -1,14 +1,28 @@
 class Board {
 	constructor(){
-		var mainCanvas = document.createElement('canvas');
-		mainCanvas.id = 'JicJacsJoe';
+		let mainCvDiv = document.createElement('div');
+		mainCvDiv.id = 'mainCvDiv';
+		mainCvDiv.classList.add('main');
+		let mainCanvas = document.createElement('canvas');
+		mainCanvas.id = 'mainCanvas';
 		mainCanvas.width = 300;
 		mainCanvas.height = 300;
-		mainCanvas.addEventListener('click', () => {
-		   console.log('canvas click');
+		mainCanvas.addEventListener('click', function () {
+			let x = event.clientX;
+			let y = event.clientY;
+			console.log('bad X: ' + x + ' bad Y: ' + y);
+			console.log('bad isn\'t relative...');
+			// good solution below (still in dev)
+			/*this.getCursorPosition(event, mainCanvas)
+			getCursorPosition(event, canvas) {
+			   var rect = canvas.getBoundingClientRect();
+		    	var x = event.clientX - rect.left;
+		    	var y = event.clientY - rect.top;
+		    	console.log("x: " + x + " y: " + y);
+			}*/
 		});
-		var ctx = mainCanvas.getContext('2d');
-		var places = [
+		let ctx = mainCanvas.getContext('2d');
+		let places = [
 			new Place(this, 0,0),new Place(this, 0,1),new Place(this, 0,2),
 			new Place(this, 1,0),new Place(this, 1,1),new Place(this, 1,2),
 			new Place(this, 2,0),new Place(this, 2,1),new Place(this, 2,2)
@@ -16,7 +30,8 @@ class Board {
 
 
 		this.drawBoard(ctx);
-		document.body.appendChild(mainCanvas);
+		mainCvDiv.appendChild(mainCanvas);
+		document.body.appendChild(mainCvDiv);
 	}
 	drawBoard(ctx){
 		ctx.moveTo(100, 0);
@@ -74,7 +89,7 @@ class Place {
 }
 
 class Player {
-	// var chequerType = "";
+	// let chequerType = "";
 	constructor(cqrType){
 		this.chequerType = cqrType;
 	}
@@ -91,9 +106,10 @@ class Player {
 
 class UI{
 	constructor(){
-		var divUI = document.createElement('div');
+		let divUI = document.createElement('div');
 		divUI.id = 'divUI';
-		var startBtn = document.createElement('input');
+		divUI.classList.add('interface');
+		let startBtn = document.createElement('input');
 		startBtn.id = 'startBtn';
 		startBtn.type = 'button';
 		startBtn.display = 'none';
@@ -105,7 +121,7 @@ class UI{
 	}
 	startGame(){
 		document.getElementById('startBtn').hidden = true;
-		var spanYourTurn = document.createElement('span');
+		let spanYourTurn = document.createElement('span');
 		spanYourTurn.innerHTML = 'Player '+ Math.ceil(Math.random()*2) + ' turn';
 		document.getElementById('divUI').appendChild(spanYourTurn);
 	}
@@ -115,4 +131,4 @@ class UI{
 const a = new Board(), b = new UI();
 const player1 = new Player('x');
 const player2 = new Player('o');
-	// var playerCPU = new Player(difficulty);
+	// let playerCPU = new Player(difficulty);

@@ -1,4 +1,4 @@
-#JicJacsJoe{
+#mainCanvas{
 	border: 2px;
 	border-style: solid;
 	border-color: #000000;
@@ -7,4 +7,16 @@
 }
 body{
 	font-family: "Arial";
+}
+div.main{
+	text-align: center;
+}
+div.interface{
+	text-align: center;
+}
+input{
+	/*width: 20em;
+	height: 20em;*/
+	border-radius: 0.2em;
+	font-size: 1.5em;
 }
