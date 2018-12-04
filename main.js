@@ -4,6 +4,9 @@ class Board {
 		mainCanvas.id = 'JicJacsJoe';
 		mainCanvas.width = 300;
 		mainCanvas.height = 300;
+		mainCanvas.addEventListener('click', () => {
+		   console.log('canvas click');
+		});
 		var ctx = mainCanvas.getContext('2d');
 		var places = [
 			new Place(this, 0,0),new Place(this, 0,1),new Place(this, 0,2),
