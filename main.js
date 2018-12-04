@@ -33,20 +33,37 @@ class Board {
 		ctx.stroke();
 		
 		//just for now, drawing the shapes below
-		this.drawCross(ctx);
-		this.drawCircle(ctx);
+		this.drawX(ctx, 50, 50);
+		// this.drawX(ctx, 150, 50);
+		this.drawX(ctx, 250, 50);
+		// this.drawX(ctx, 50, 150);
+		this.drawX(ctx, 150, 150);
+		// this.drawX(ctx, 250, 150);
+		this.drawX(ctx, 50, 250);
+		// this.drawX(ctx, 150, 250);
+		this.drawX(ctx, 250, 250);
+		// this.drawO(ctx, 50, 50);
+		this.drawO(ctx, 150, 50);
+		// this.drawO(ctx, 250, 50);
+		this.drawO(ctx, 50, 150);
+		// this.drawO(ctx, 150, 150);
+		this.drawO(ctx, 250, 150);
+		// this.drawO(ctx, 50, 250);
+		this.drawO(ctx, 150, 250);
+		// this.drawO(ctx, 250, 250);
 	};
-	drawCross(ctx){
-		ctx.moveTo(125, 25);
-		ctx.lineTo(175, 75);
+	drawX(ctx, x, y){
+		ctx.moveTo(x - 25, y - 25);
+		ctx.lineTo(x + 25, y + 25);
 		ctx.stroke();
-		ctx.moveTo(175, 25);
-		ctx.lineTo(125, 75);
+		ctx.moveTo(x + 25, y - 25);
+		ctx.lineTo(x - 25, y + 25);
 		ctx.stroke();
-	}
-	drawCircle(ctx,x,y){
 		ctx.beginPath();
-		ctx.arc(50,50,30,0,2*Math.PI);
+	}
+	drawO(ctx,x,y){
+		ctx.beginPath();
+		ctx.arc(x,y,30,0,2*Math.PI);
 		ctx.stroke();
 	}
 }
