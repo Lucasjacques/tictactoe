@@ -7,26 +7,23 @@ class Board {
 		mainCanvas.id = 'mainCanvas';
 		mainCanvas.width = 300;
 		mainCanvas.height = 300;
-		mainCanvas.addEventListener('click', function () {
-			let x = event.clientX;
-			let y = event.clientY;
-			console.log('bad X: ' + x + ' bad Y: ' + y);
-			console.log('bad isn\'t relative...');
-			// good solution below (still in dev)
-			/*this.getCursorPosition(event, mainCanvas)
-			getCursorPosition(event, canvas) {
-			   var rect = canvas.getBoundingClientRect();
-		    	var x = event.clientX - rect.left;
-		    	var y = event.clientY - rect.top;
-		    	console.log("x: " + x + " y: " + y);
-			}*/
-		});
 		let ctx = mainCanvas.getContext('2d');
 		let places = [
 			new Place(this, 0,0),new Place(this, 0,1),new Place(this, 0,2),
 			new Place(this, 1,0),new Place(this, 1,1),new Place(this, 1,2),
 			new Place(this, 2,0),new Place(this, 2,1),new Place(this, 2,2)
 		];
+		mainCanvas.addEventListener('click', function () {
+		   	var rect = mainCanvas.getBoundingClientRect();
+	    	var x = event.clientX - rect.left;
+	    	var y = event.clientY - rect.top;
+	    	console.log('Hey! You clicked on me! To be more specific you clicked me on [' 
+	    		+ x + ', y: ' + y + '] *relative* coords ;)');
+	    	/* the line below tries to draw a O when the user clicks,
+	    	/* but currently displays error
+	    	*/
+	    	// this.drawO(ctx,300,300);
+		});
 
 
 		this.drawBoard(ctx);
@@ -75,12 +72,12 @@ class Board {
 		ctx.lineTo(x - 25, y + 25);
 		ctx.stroke();
 		ctx.beginPath();
-	}
+	};
 	drawO(ctx,x,y){
 		ctx.beginPath();
 		ctx.arc(x,y,30,0,2*Math.PI);
 		ctx.stroke();
-	}
+	};
 }
 
 class Place {
