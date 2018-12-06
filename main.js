@@ -7,6 +7,8 @@ class Board {
 		mainCanvas.id = 'mainCanvas';
 		mainCanvas.width = 300;
 		mainCanvas.height = 300;
+		let debugDiv = document.createElement('div');
+		debugDiv.id = 'debugDiv';
 		let ctx = mainCanvas.getContext('2d');
 		let places = [
 			new Place(this, 0,0),new Place(this, 0,1),new Place(this, 0,2),
@@ -17,6 +19,11 @@ class Board {
 		   	var rect = mainCanvas.getBoundingClientRect();
 	    	var x = event.clientX - rect.left;
 	    	var y = event.clientY - rect.top;
+	    	let debugP = document.createElement('p');
+	    	debugP.id = 'debugP';
+	    	debugP.innerHTML = 'Hey! You clicked on me! To be more specific you clicked me on [' 
+	    		+ x + ', y: ' + y + '] <b> relative </b> coords ;)';
+	    	debugDiv.appendChild(debugP);
 	    	console.log('Hey! You clicked on me! To be more specific you clicked me on [' 
 	    		+ x + ', y: ' + y + '] *relative* coords ;)');
 	    	/* the line below tries to draw a O when the user clicks,
@@ -28,6 +35,7 @@ class Board {
 
 		this.drawBoard(ctx);
 		mainCvDiv.appendChild(mainCanvas);
+		mainCvDiv.appendChild(debugDiv);
 		document.body.appendChild(mainCvDiv);
 	}
 	drawBoard(ctx){
