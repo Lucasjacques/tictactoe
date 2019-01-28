@@ -19,7 +19,16 @@ class Board {
 		   	var rect = mainCanvas.getBoundingClientRect();
 	    	var x = event.clientX - rect.left;
 	    	var y = event.clientY - rect.top;
-	    	let debugP = document.createElement('p');
+	    	let debugP;
+	    	
+	    	// creates the element if it's not already created
+	    	if(!document.getElementById('debugP')){ 
+	    		debugP = document.createElement('p');
+	    	}
+	    	else{
+	    		debugP = document.getElementById('debugP');
+	    	}
+	    	
 	    	debugP.id = 'debugP';
 	    	debugP.innerHTML = 'Hey! You clicked on me! To be more specific you clicked me on [' 
 	    		+ x + ', y: ' + y + '] <b> relative </b> coords ;)';
